@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des salariés{% endblock %}
+
+{% block contenu %}
+    <h1>Liste des salariés</h1>
+    <table class="uk-table uk-table-stripped">
+        <thead>
+            <th>SALARIE</th>
+            <th>ADRESSE</th>
+            <th>CP</th>
+            <th>VILLE</th>
+            <th>DATE EMBAUCHE</th>
+            <th>ENTREPRISE</th>
+        </thead>
+        <tbody>
+            {% for salarie in salaries %}
+                <tr>
+                    <td><a href="{{ path('salarie_show', {'id' :salarie.id}) }}">{{salarie}}</a></td> {#{{ salarie.nom ~ ' ' salarie.prenom }}#}
+                    <td>{{ salarie.adresse }}</td>
+                    <td>{{ salarie.cp }}</td>
+                    <td>{{ salarie.ville }}</td>
+                    <td> 
+                        {% if salarie.entreprise %}
+                            {{ salarie.dateEmbauche | date('d/m/Y') }}
+                        {% else %}
+                            Aucune
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if salarie.entreprise %}
+                            <a href="{{ path('entreprise_show', {'id' :salarie.entreprise.id}) }}">{{ salarie.entreprise.raisonSociale }}</a>
+                        {% else %}
+                            SANS EMPLOI
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

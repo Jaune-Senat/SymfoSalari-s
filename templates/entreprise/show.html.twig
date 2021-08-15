@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <h1>{{entreprise}}</h1> {# {{ entreprise.raisonSociale }} #}
+
+    <h3>Liste des employés</h3>
+        <table class="uk-table uk-table-stripped">
+            <thead>
+                <th>EMPLOYÉ</th>
+                <th>ADRESSE</th>
+                <th>CP</th>
+                <th>VILLE</th>
+                <th>DATE EMBAUCHE</th>
+            </thead>
+            <tbody>
+            {% for salarie in entreprise.salaries %}
+            <tr>
+                    <td>
+                    <a href="{{ path('salarie_show', {'id' :salarie.id}) }}">{{salarie}}</a></td> {#{{ salarie.nom ~ ' ' salarie.prenom }}#}
+                    <td>{{ salarie.adresse }}</td>
+                    <td>{{ salarie.cp }}</td>
+                    <td>{{ salarie.ville }}</td>
+                    <td>{{ salarie.dateEmbauche | date('d/m/Y') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <a class="bLink" href="{{ path('entreprise_edit' , {'id' :entreprise.id})}}"> Editer l'entreprise</a>
+    <a class="bLink" href="{{ path('entreprise_delete' , {'id' :entreprise.id})}}"> Supprimer l'entreprise</a>
+{% endblock %}

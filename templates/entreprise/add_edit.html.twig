@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des entreprises{% endblock %}
+
+{% block  body %} 
+
+{% if editMode %}
+    <h1>Modification d'une entreprise</h1>
+{% else %}
+    <h1>Ajout d'une entreprise</h1>      
+{% endif %}
+
+{{ form_start(formEntreprise) }}
+    {{form_row(formEntreprise.raisonSociale)}}
+    {{form_row(formEntreprise.siret)}}
+    {{form_row(formEntreprise.adresse)}}
+    {{form_row(formEntreprise.cp)}}
+    {{form_row(formEntreprise.ville)}}
+{{ form_end(formEntreprise) }}
+
+<a class="bLink" href="{{path('entreprise_index')}}">Retour à la liste des entreprises</a>
+
+{% endblock %}

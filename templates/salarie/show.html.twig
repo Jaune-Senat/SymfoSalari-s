@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <h1>{{salarie}}</h1> {# {{ salarie.nom ~ ' ' salarie.prenom }} #}
+    <h3>
+        {% if salarie.entreprise %}
+            travaille chez <a href="{{ path("entreprise_show", {'id' :salarie.entreprise.id}) }}">{{salarie.entreprise}}</a> depuis le {{salarie.dateEmbauche | date('d/m/Y') }} 
+        {% else %}
+            SANS EMPLOI  
+        {% endif %}
+    </h3>
+    <p>
+        <b>Né le:</b> {{salarie.dateNaissance | date('d/m/Y')}}<br>
+        <b>Habite:</b> {{salarie.living}}
+    </p>
+
+    <a class="bLink" href="http:{{ path('salarie_edit' , {'id' :salarie.id})}}"> Editer le salarié</a>
+    <a class="bLink" href="{{ path('salarie_delete' , {'id' :salarie.id})}}"> Supprimer le salarié</a>
+{% endblock %}

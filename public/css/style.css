@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+}
+
+.uk-form-stacked{
+    border: 3px solid rgb(23, 90, 179);
+    border-radius: 5%;
+    padding: 1em;
+    width: 70%;
+    margin: auto;
+}
+
+#navigathor{
+    background-color:rgb(23, 90, 179);
+    display: flex;
+    justify-content: space-evenly;
+    padding: auto;
+}
+
+#navigathor>a{
+    color : #fff;
+    font-size: 1.5em;
+    padding: 1em;
+}
+
+h1,h3,p,.uk-table{
+    width: 90%;
+    margin-left: auto;
+}
+
+.bLink{
+    font-size: 1.5em;
+    margin-left: 1em;
+}
